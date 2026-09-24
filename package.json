@@ -1,0 +1,16 @@
+{
+  "name": "slatepro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SlatePro Oy – verkkosivusto (staattinen sivu + Node-palvelin NordicHostin AI App Hostingiin)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.6"
+  }
+}
