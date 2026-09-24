@@ -5,6 +5,7 @@
   "description": "SlatePro Oy – verkkosivusto (staattinen sivu + Node-palvelin NordicHostin AI App Hostingiin)",
   "main": "server.js",
   "scripts": {
+    "build": "node -e \"console.log('site/ on valmiiksi rakennettu (python3 build.py omalla koneella) – ei build-vaihetta palvelimella')\"",
     "start": "node server.js"
   },
   "engines": {
