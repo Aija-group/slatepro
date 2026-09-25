@@ -319,7 +319,7 @@ def before_after():
   <div class="wrap ba-wrap">
     <div class="ba-copy reveal">
       <p class="eyebrow">Näin voi olla</p>
-      <h2>…mutta et halua aloittaa <span class="red">täydellistä kylpyhuonesaneerausta?</span></h2>
+      <h2>Ennen / <span class="red">jälkeen</span></h2>
       <p class="lead">Me uusimme silikonit ja laattasaumat nopeasti ja siististi – kylpyhuoneesi näyttää taas uudelta.</p>
       <p class="hint">{icon("arrow")} Vedä liukusäädintä ja vertaa.</p>
       <div class="ba-tabs" role="tablist">{tabs}</div>
