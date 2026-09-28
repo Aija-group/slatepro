@@ -101,12 +101,16 @@
     }, { passive: true });
   }
 
-  // Lomakkeen virheilmoitus (?virhe=1)
-  if (/[?&]virhe=1/.test(location.search)) {
+  // Lomakkeen virheilmoitus (?virhe=1 = kentät, ?virhe=2 = tekninen lähetysvirhe)
+  var virhe = (location.search.match(/[?&]virhe=(\d)/) || [])[1];
+  if (virhe) {
     var form = document.querySelector('.form');
     if (form) {
       var p = document.createElement('p');
-      p.className = 'note'; p.textContent = 'Lähetys ei onnistunut. Tarkista pakolliset kentät tai ota yhteyttä WhatsAppilla.';
+      p.className = 'note';
+      p.textContent = virhe === '2'
+        ? 'Viestin lähetys epäonnistui teknisen vian vuoksi. Pahoittelut! Soita 040 185 6969 tai laita viesti WhatsAppilla – vastaamme nopeasti.'
+        : 'Lähetys ei onnistunut. Tarkista, että nimi, puhelin, sähköposti ja viesti on täytetty.';
       form.insertBefore(p, form.querySelector('h2').nextSibling);
     }
   }

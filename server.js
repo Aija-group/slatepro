@@ -23,7 +23,8 @@ const MAIL_TO = process.env.MAIL_TO || 'slateprooy@gmail.com';
 const MAIL_FROM = process.env.MAIL_FROM || 'no-reply@slatepro.fi';
 const SITE_NAME = 'SlatePro Oy';
 const THANKS = '/kiitos/';
-const ERROR = '/yhteystiedot/?virhe=1';
+const ERROR = '/yhteystiedot/?virhe=1';       // puuttuva tai virheellinen kenttä
+const ERROR_MAIL = '/yhteystiedot/?virhe=2';  // tekninen lähetysvirhe (SMTP/sendmail)
 const FIELDS = [['nimi', 'Nimi'], ['puhelin', 'Puhelin'], ['email', 'Sähköposti'], ['aihe', 'Paikkakunta'], ['viesti', 'Viesti'], ['sivu', 'Lähetetty sivulta']];
 const REQUIRED = ['nimi', 'puhelin', 'email', 'viesti'];
 
@@ -119,8 +120,9 @@ function handleForm(req, res) {
       });
       redirect(res, THANKS);
     } catch (e) {
-      console.error('Lomakkeen lähetys epäonnistui:', e.message);
-      redirect(res, ERROR);
+      const how = process.env.SMTP_HOST ? `SMTP ${process.env.SMTP_HOST}` : 'sendmail (SMTP_HOST puuttuu)';
+      console.error(`Lomakkeen lähetys epäonnistui [${how}]:`, e.code || '', e.message);
+      redirect(res, ERROR_MAIL);
     }
   });
 }
