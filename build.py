@@ -262,7 +262,8 @@ VERSION = "1"
 def sec_head(eyebrow, title, lead="", center=False):
     c = " center" if center else ""
     lead_html = f'<p class="lead">{lead}</p>' if lead else ""
-    return f'<div class="sec-head{c} reveal"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2>{lead_html}</div>'
+    eyebrow_html = f'<p class="eyebrow">{eyebrow}</p>' if eyebrow else ""
+    return f'<div class="sec-head{c} reveal">{eyebrow_html}<h2>{title}</h2>{lead_html}</div>'
 
 
 def hero_home():
@@ -336,7 +337,7 @@ def services_grid(heading=True):
       <div class="svc-body"><span class="svc-ico">{icon(s["icon"])}</span><h3>{s["name"]}</h3><p>{s["short"]}</p>
       <span class="more">Lue lisää {icon("arrow")}</span></div>
     </a>''' for s in SERVICES)
-    head = sec_head("Palvelut", "Märkätilojen saumaukset Pirkanmaalla",
+    head = sec_head("", "Märkätilojen saumaukset Pirkanmaalla",
                     "SlatePro on erikoistunut kylpyhuoneiden ja muiden märkätilojen saumojen kunnostamiseen.") if heading else ""
     return f'<section class="sec" id="palvelut"><div class="wrap">{head}<div class="svc-grid">{cards}</div></div></section>'
 
