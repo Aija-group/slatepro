@@ -12,6 +12,7 @@ COMPANY = {
     "email": "slateprooy@gmail.com",
     "area": "Koko Pirkanmaa",
     "domain": "slatepro.fi",          # vahvistettava
+    "google_verification": "3jw1Mo8puHluRqu6wOhEjxY2RHCblu8HoLE2SsuF8oo",  # Search Console HTML-tagin content-arvo; tyhjä = ei tagia
     "ytunnus": "",                    # vahvistettava
 }
 

@@ -202,6 +202,7 @@ def faq_schema(faq):
 
 def page(path, title, description, body, current="", schema=None, og="og.jpg", noindex=False):
     robots = "noindex, nofollow" if (DEMO or noindex) else "index, follow"
+    gsc = f'<meta name="google-site-verification" content="{esc(COMPANY["google_verification"])}">\n' if (COMPANY.get("google_verification") and not DEMO) else ""
     ld = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in (schema or []))
     html = f'''<!doctype html>
 <html lang="fi">
@@ -211,7 +212,7 @@ def page(path, title, description, body, current="", schema=None, og="og.jpg", n
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="{robots}">
-<link rel="canonical" href="{BASE_URL}{path}">
+{gsc}<link rel="canonical" href="{BASE_URL}{path}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fi_FI">
 <meta property="og:site_name" content="SlatePro">
